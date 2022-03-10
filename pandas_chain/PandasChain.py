@@ -62,12 +62,13 @@ class PandasChain:
         m.update(str.encode(str(merkle)))
 
         block.block_hash =  m.hexdigest()
+        block.set_status("COMMITTED")
         self.__chain.append(block)
+        print('Block committed')
+
         self.__seq_id += 1
         self.__current_block = Block(self.__seq_id)
-
-        block.set_status("COMMITTED")
-        print('Block committed')
+        print('New Block Instantiated')
 
     # 10 pts - Display just the metadata of all blocks (committed or uncommitted), one block per line.
     # You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and total number (count)
