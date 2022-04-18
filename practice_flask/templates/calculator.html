@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title></title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+    </head>
+<body>
+<form class="form-horizontal" method="post" action="{{ url_for('calculate_result') }}">
+<fieldset>
+<!-- Form Name -->
+<legend>Multiplier</legend>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="input1">Number</label>
+  <div class="col-md-4">
+  <input id="input1" name="input_number1" type="number" placeholder="Enter a number" class="form-control input-md">
+  </div>
+</div>
+      <!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="input2">Number</label>
+  <div class="col-md-4">
+  <input id="input2" name="input_number2" type="number" placeholder="Enter a number" class="form-control input-md">
+  </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Calculate</button>
+  </div>
+</div>
+</fieldset>
+</form>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<div style="text-align:center">
+    <h1>{{ calculated_number }}</h1></div>
+<div style="text-align:center">
+<a href="{{ url_for('home') }}">perform another operation</a></div>
+</body>
+</html>

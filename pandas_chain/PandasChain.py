@@ -9,6 +9,8 @@ import random
 from Block import Block
 import uuid
 
+print(np.__version__)
+
 
 class PandasChain:
     # 5 pts - Complete this constructor
@@ -46,10 +48,10 @@ class PandasChain:
     # root hash, generate and set the block's hash, set the prev_hash to the previous block's hash, append this block
     # to the chain list, increment the seq_id and create a new block as the current block
     def __commit_block(self, block):
-        if len(self.__chain) == 0:
-            block.prev_hash = None
-        else:
-            block.prev_hash = self.__chain[-1].block_hash
+        # if len(self.__chain) == 0:
+        #     block.prev_hash = None
+        # else:
+        #     block.prev_hash = self.__chain[-1].block_hash
 
         merkle = block.get_simple_merkle_root()
 
@@ -61,13 +63,15 @@ class PandasChain:
         m.update(str.encode(str(random.randint(0, 99)))) # add random number to hash
         m.update(str.encode(str(merkle)))
 
-        block.block_hash =  m.hexdigest()
+        hash = m.hexdigest()
+
+        block.block_hash = hash
         block.set_status("COMMITTED")
         self.__chain.append(block)
         print('Block committed')
 
         self.__seq_id += 1
-        self.__current_block = Block(self.__seq_id)
+        self.__current_block = Block(self.__seq_id, hash)
         print('New Block Instantiated')
 
     # 10 pts - Display just the metadata of all blocks (committed or uncommitted), one block per line.
